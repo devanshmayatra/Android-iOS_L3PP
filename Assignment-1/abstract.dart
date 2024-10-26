@@ -84,7 +84,7 @@ class Airplane extends Vehicle {
 }
 
 class Tank extends Vehicle {
-  int speed = 0;
+  int speed = 0;  
   Tank(this.speed);
   @override
   void acclerate() {
