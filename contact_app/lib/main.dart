@@ -17,10 +17,6 @@ class TodoApp extends StatefulWidget {
 
 class TodoAppState extends State<TodoApp> {
   List<Map> contacts = [];
-  final nameTextController = TextEditingController();
-  final numberTextController = TextEditingController();
-  final emailTextController = TextEditingController();
-
   void _addTodoItem(String name, String number, String email) {
     Map<String, dynamic> contact = {
       'name': name,
@@ -117,7 +113,11 @@ class TodoAppState extends State<TodoApp> {
 }
 
 class FullScreenDialog extends StatelessWidget {
-  const FullScreenDialog({super.key});
+  FullScreenDialog({super.key});
+
+  final _nameTextController = TextEditingController();
+  final _numberTextController = TextEditingController();
+  final _emailTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -133,81 +133,81 @@ class FullScreenDialog extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(left: 16),
-                  margin: const EdgeInsets.only(top: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    controller: nameTextController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter a new Contact Name",
-                      border: InputBorder.none,
-                    ),
+          padding: const EdgeInsets.all(4.0),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(left: 16),
+                margin: const EdgeInsets.only(top: 20),
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: TextField(
+                  controller: _nameTextController,
+                  decoration: const InputDecoration(
+                    labelText: "Enter a new Contact Name",
+                    border: InputBorder.none,
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.only(left: 16),
-                  margin: const EdgeInsets.only(top: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    controller: _numberTextController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter a new Contact Number",
-                      border: InputBorder.none,
-                    ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 16),
+                margin: const EdgeInsets.only(top: 20),
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: TextField(
+                  controller: _numberTextController,
+                  decoration: const InputDecoration(
+                    labelText: "Enter a new Contact Number",
+                    border: InputBorder.none,
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.only(left: 16),
-                  margin: const EdgeInsets.only(top: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    controller: _emailTextController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter a new Contact Email",
-                      border: InputBorder.none,
-                    ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 16),
+                margin: const EdgeInsets.only(top: 20),
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: TextField(
+                  controller: _emailTextController,
+                  decoration: const InputDecoration(
+                    labelText: "Enter a new Contact Email",
+                    border: InputBorder.none,
                   ),
                 ),
-                const Spacer(),
-                Align(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text("Cancel"),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          _addTodoItem(
-                              _nameTextController.text,
-                              _numberTextController.text,
-                              _emailTextController.text);
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text("Add"),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),,
+              ),
+              const Spacer(),
+              Align(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Cancel"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        _addTodoItem(
+                            _nameTextController.text,
+                            _numberTextController.text,
+                            _emailTextController.text);
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Add"),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
